@@ -9,7 +9,7 @@
 {%- macro json2html(element) -%}
 <{{ element.tag }}
 
-    {%- for key, val in element.attr.iteritems() -%}
+    {%- for key, val in element.attr.items() -%}
         {{ ' ' + key }}{% if val %}="{{ val }}"{% endif %}
     {%- endfor -%}>{{ element.text }}
 

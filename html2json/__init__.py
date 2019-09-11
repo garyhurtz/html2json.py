@@ -92,7 +92,7 @@ class Element(object):
         # the input generally contains newlines and whitespace so clean it up
         # if so, render all children into a single string
         if any(c.string.strip() for c in soup.children if not c.name):
-            return Element(soup.name, u''.join(unicode(c) for c in soup.children), soup.attrs)
+            return Element(soup.name, u''.join(str(c) for c in soup.children), soup.attrs)
 
         # now handle remaining elements
         # instantiate a parent then recurse to instantiate each child
