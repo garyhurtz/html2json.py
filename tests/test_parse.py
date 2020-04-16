@@ -14,7 +14,7 @@ def test_cover():
 
     assert dut.tag == u'div'
     assert dut.child[0].tag == u'h1'
-    assert dut.child[0].text ==  u'title'
+    assert dut.child[0].text == u'title'
     assert dut.child[1].tag == u'p'
     assert dut.child[1].text == u'content'
     assert dut.child[2].tag == u'figure'
@@ -139,6 +139,27 @@ def test_div_with_id_and_class_and_text():
     assert dut.text == u'this is a div'
     assert dut.attr[u'id'] == u'foo'
     assert dut.attr[u'class'] == [u'bar', u'goo']
+
+    assert dut.render() == json
+
+
+def test_div_with_h1_child_and_text():
+    html = u'<div><h1>text</h1></div>'
+    json = {
+        u'tag': u'div',
+        u'child': [{
+            u'tag': u'h1',
+            'text': 'text'
+        }]
+    }
+
+    dut = Element.parse(html)
+
+    print(dut)
+
+    assert dut.tag == u'div'
+    assert dut.child[0].tag == u'h1'
+    assert dut.child[0].text == 'text'
 
     assert dut.render() == json
 

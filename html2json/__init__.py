@@ -83,7 +83,9 @@ class Element(object):
 
         # if an element has one child and it is a string, it is held in soup.string
         # else soup.string is None
-        if soup.string:
+        children = list(soup.children)
+
+        if len(children) == 1 and not children[0].name:
             return Element(soup.name, soup.string, soup.attrs)
 
         # if the child is a tag it will have a name attribute, else it is a string
